@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+import React from 'react'
+import { Provider } from "react-redux"
 import './App.css';
+import "bootstrap/dist/css/bootstrap.css";
+//import { ListaTareas } from './components/ListaTareas';
+import  ListaTareas  from './container/ListaTareas';
+import AgregarTarea from './container/AgregarTarea';
+//import { AgregarTarea } from './components/AgregarTarea';
+import theOnlySourceOfTruth from "./store/store"
+
+const tareas = [
+  {id: 1, nombre: "Bañarse", done: false},
+  {id: 2, nombre: "Lavar los platos", done: false},
+  {id: 3, nombre: "Trabajar", done: false},
+]
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <Provider store={theOnlySourceOfTruth}>
+      <header className="alert alert-info text-center">
+        <h1 className="display-1">Andreani Todo List</h1>
       </header>
-    </div>
+      <main>
+        <ListaTareas />
+        <AgregarTarea />
+      </main>
+    </Provider>
   );
 }
 
