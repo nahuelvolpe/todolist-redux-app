@@ -1,10 +1,6 @@
-import {createStore} from "redux"
-import reducer from "../reducers/reducer"
+import { configureStore } from "@reduxjs/toolkit";
+import todoReducer from "../store/slices/todo/todoSlice";
 
-const tareas = [
-    {id: 1, nombre: "Bañarse (Store)", done: false},
-    {id: 2, nombre: "Lavar los platos (Store)", done: false},
-    {id: 3, nombre: "Trabajar (Store)", done: false},
-  ]
-
-export default createStore(reducer, tareas)
+export const store = configureStore({
+  reducer: { todo: todoReducer },
+});
