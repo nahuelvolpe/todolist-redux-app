@@ -1,0 +1,7 @@
+{
+    "tareas": [
+        { "id": 1, "nombre": "Comprar facturas", "done": false },
+        { "id": 2, "nombre": "Pasear al perro", "done": false },
+        { "id": 3, "nombre": "Trabajar", "done": false }
+    ]
+}
