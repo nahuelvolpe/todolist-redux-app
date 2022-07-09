@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { agregar } from "../store/slices/todo/todoSlice";
+import { agregar, postTareas } from "../store/todo/todoSlice";
 
 export const AgregarTarea = (props) => {
   const [tarea, setTarea] = useState("");
-  const tareas = useSelector((state) => state.todo);
+  const { tareas } = useSelector((state) => state.todo);
   const dispatch = useDispatch();
 
   return (
@@ -22,7 +22,7 @@ export const AgregarTarea = (props) => {
         <button
           className="btn btn-outline-primary"
           onClick={() => {
-            dispatch(agregar(tarea));
+            dispatch(postTareas({ tareas, nombre: tarea }));
             setTarea("");
           }}
         >

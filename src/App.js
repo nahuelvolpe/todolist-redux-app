@@ -1,9 +1,10 @@
-import React from "react";
-import { Provider } from "react-redux";
+import React, { useEffect } from "react";
+import { Provider, useDispatch } from "react-redux";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { ListaTareas } from "./components/ListaTareas";
 import { AgregarTarea } from "./components/AgregarTarea";
+import { initTareas } from "./store/todo/todoSlice";
 import { store } from "./store/store";
 
 function App() {

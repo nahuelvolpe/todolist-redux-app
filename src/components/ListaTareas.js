@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Swal from "sweetalert2";
 import { useSelector, useDispatch } from "react-redux";
-import { borrar } from "../store/slices/todo/todoSlice";
+import { borrar, deleteTarea } from "../store/todo/todoSlice";
+//import { getTareas } from "../store/todo/todoThunk";
+import { getTareas } from "../store/todo/todoSlice";
 
 export const ListaTareas = (props) => {
-  const tareas = useSelector((state) => state.todo);
-  console.log(tareas);
+  const { tareas, loading } = useSelector((state) => state.todo);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTareas());
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <ul className="list-group w-50 mx-auto">
@@ -26,7 +33,7 @@ export const ListaTareas = (props) => {
                 confirmButtonText: "Eliminar",
               }).then((result) => {
                 if (result.isConfirmed) {
-                  dispatch(borrar(tarea.id));
+                  dispatch(deleteTarea(tarea.id));
                 }
               });
             }}
